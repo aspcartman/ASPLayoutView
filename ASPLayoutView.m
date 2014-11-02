@@ -3,11 +3,11 @@
 // Copyright (c) 2014 ASPCartman. All rights reserved.
 //
 
-#import <KeepLayout/KeepAttribute.h>
 #import "ASPLayoutView.h"
-#import "UIView+KeepLayout.h"
-#import "UIView+ContraintsAffectingView.h"
-#import "NSMutableArray+BlocksKit.h"
+
+#import <KeepLayout.h>
+#import <BlocksKit.h>
+
 
 @implementation ASPLayoutView
 {
@@ -115,5 +115,13 @@
 		return YES;
 	}];
 
+}
+
+- (NSArray *) constraintsAffectingView:(UIView *)view
+{
+	return [self.constraints bk_select:^BOOL(NSLayoutConstraint *constraint)
+	{
+		return constraint.firstItem == view || constraint.secondItem == view;
+	}];
 }
 @end
