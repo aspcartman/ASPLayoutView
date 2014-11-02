@@ -76,7 +76,7 @@
 
 	[self addSubview:view];
 	view.keepInsets.min = 0;
-	view.keepSize.equal = 0;
+	view.keepSize.equal = KeepFitting(0);
 	view.keepFirstBaselineAlignTo(prevView).equal = 0;
 	view.keepLeftOffsetTo(prevView).min = 0;
 }
