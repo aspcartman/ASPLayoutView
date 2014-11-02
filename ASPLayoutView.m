@@ -36,10 +36,10 @@
 	[self addSubview:view];
 	for (UIView *subview in currentViews)
 	{
-		view.keepTopOffsetTo(subview).min = KeepRequired(offset);
+		view.keepTopOffsetTo(subview).min = offset;
 	}
-	view.keepTopInset.equal     = currentViews.count ? KeepFitting(0) : KeepRequired(offset);
-	view.keepInsets.min         = KeepRequired(0);
+	view.keepTopInset.equal     = currentViews.count ? KeepFitting(0) : offset;
+	view.keepInsets.min         = 0;
 	view.keepSize.equal         = KeepFitting(1);
 	if (centered)
 	{
@@ -55,10 +55,10 @@
 	[self addSubview:view];
 	for (UIView *subview in currentViews)
 	{
-		view.keepLeftOffsetTo(subview).min = KeepRequired(offset);
+		view.keepLeftOffsetTo(subview).min = offset;
 	}
-	view.keepLeftInset.equal = currentViews.count ? KeepFitting(0) : KeepRequired(offset);
-	view.keepInsets.min      = KeepRequired(0);
+	view.keepLeftInset.equal = currentViews.count ? KeepFitting(0) : offset;
+	view.keepInsets.min      = 0;
 	view.keepSize.equal      = KeepFitting(1);
 	[view keepVerticallyCentered];
 }
