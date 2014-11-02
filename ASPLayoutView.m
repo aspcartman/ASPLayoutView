@@ -40,7 +40,7 @@
 	}
 	view.keepTopInset.equal     = currentViews.count ? KeepFitting(0) : offset;
 	view.keepInsets.min         = 0;
-	view.keepSize.equal         = KeepFitting(1);
+	view.keepSize.min         = KeepFitting(1);
 	if (centered)
 	{
 		[view keepHorizontallyCentered];
@@ -49,7 +49,7 @@
 
 - (void) addHorizontally:(UIView *)view offset:(float)offset
 {
-	[self addHorizontally:view offset:offset centered:_centered]
+	[self addHorizontally:view offset:offset centered:_centered];
 }
 
 - (void) addHorizontally:(UIView *)view offset:(float)offset centered:(BOOL)centered
@@ -62,11 +62,34 @@
 	}
 	view.keepLeftInset.equal = currentViews.count ? KeepFitting(0) : offset;
 	view.keepInsets.min      = 0;
-	view.keepSize.equal      = KeepFitting(1);
+	view.keepSize.min      = KeepFitting(1);
 	if (centered)
 	{
 		[view keepVerticallyCentered];
 	}
+}
+
+- (void) addBaseligned:(UIView *)view
+{
+	UIView *prevView = [self.subviews lastObject];
+	NSParameterAssert(prevView);
+
+	[self addSubview:view];
+	view.keepInsets.min = 0;
+	view.keepSize.min = 0;
+	view.keepFirstBaselineAlignTo(prevView).equal = 0;
+}
+
+- (void) addBaseligned:(UIView *) view offset:(float)offset
+{
+	UIView *prevView = [self.subviews lastObject];
+	NSParameterAssert(prevView);
+
+	[self addSubview:view];
+	view.keepInsets.min = 0;
+	view.keepSize.min = 0;
+	view.keepFirstBaselineAlignTo(prevView).equal = 0;
+	view.keepLeftOffsetTo(prevView).equal = offset;
 }
 
 - (void) showIfTrue:(BOOL)show view:(UIView *)view

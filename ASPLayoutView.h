@@ -14,6 +14,10 @@
 - (void) addHorizontally:(UIView *)view offset:(float)offset;
 - (void) addHorizontally:(UIView *)view offset:(float)offset centered:(BOOL)centered;
 
+- (void) addBaseligned:(UIView *) view;
+- (void) addBaseligned:(UIView *) view offset:(float)offset;
+
+
 - (void) showIfTrue:(BOOL)show view:(UIView *)view;
 - (void) hideView:(UIView *)view;
 - (void) showView:(UIView *)view;
