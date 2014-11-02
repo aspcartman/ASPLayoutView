@@ -27,7 +27,7 @@
 }
 - (void) addVertically:(UIView *)view offset:(float)offset
 {
-	[self addVertically:view offset:offset centered:YES];
+	[self addVertically:view offset:offset centered:_centered];
 }
 
 - (void) addVertically:(UIView *)view offset:(float)offset centered:(BOOL)centered
@@ -47,9 +47,12 @@
 	}
 }
 
-
-
 - (void) addHorizontally:(UIView *)view offset:(float)offset
+{
+	[self addHorizontally:view offset:offset centered:_centered]
+}
+
+- (void) addHorizontally:(UIView *)view offset:(float)offset centered:(BOOL)centered
 {
 	NSArray *currentViews    = self.subviews;
 	[self addSubview:view];
@@ -60,7 +63,10 @@
 	view.keepLeftInset.equal = currentViews.count ? KeepFitting(0) : offset;
 	view.keepInsets.min      = 0;
 	view.keepSize.equal      = KeepFitting(1);
-	[view keepVerticallyCentered];
+	if (centered)
+	{
+		[view keepVerticallyCentered];
+	}
 }
 
 - (void) showIfTrue:(BOOL)show view:(UIView *)view
