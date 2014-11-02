@@ -28,5 +28,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'KeepLayout'
+  s.dependency 'BlocksKit'
 
 end
